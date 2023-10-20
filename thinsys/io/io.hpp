@@ -16,7 +16,7 @@
 
 namespace fs = std::filesystem;
 
-namespace io {
+namespace thinsys::io {
 
 class file_descriptor {
   static constexpr int invalid = -1;
@@ -206,4 +206,4 @@ private:
   fs::path dest_path_;
 };
 
-} // namespace io
+} // namespace thinsys::io

@@ -13,3 +13,10 @@ option(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE On "Enable LTO in release buil
 include(cmake/canonical_project.cmake)
 
 add_subdirectory(thinsys)
+
+add_custom_target(project_conf_files SOURCES
+  .gitignore
+  .clang-format
+  .clangd
+  conanfile.txt
+)

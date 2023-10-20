@@ -5,7 +5,7 @@
 #include <system_error>
 #include <utility>
 
-namespace io {
+namespace thinsys::io {
 
 template <typename T>
 struct input_traits {
@@ -42,4 +42,4 @@ size_t read(In& in, std::span<std::byte> dest) {
   return res;
 }
 
-} // namespace io
+} // namespace thinsys::io

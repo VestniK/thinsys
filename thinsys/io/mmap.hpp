@@ -4,7 +4,7 @@
 
 #include <thinsys/io/io.hpp>
 
-namespace io {
+namespace thinsys::io {
 
 struct auto_unmaper {
   size_t size{0};
@@ -55,4 +55,4 @@ inline const std::byte* end(
   return data(mapping) + size(mapping);
 }
 
-} // namespace io
+} // namespace thinsys::io

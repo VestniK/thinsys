@@ -6,7 +6,7 @@
 #include <system_error>
 #include <utility>
 
-namespace io {
+namespace thinsys::io {
 
 template <typename T>
 struct output_traits {
@@ -49,4 +49,4 @@ void write(Out& out, std::string_view str) noexcept {
   write(out, std::as_bytes(std::span{str}));
 }
 
-} // namespace io
+} // namespace thinsys::io

@@ -1,7 +1,7 @@
 find_package(Catch2 REQUIRED)
 
 cpp_unit(
-  NAME tsio
+  NAME thinsys-io
   STD cxx_std_23
   LIBS
   TEST_LIBS
