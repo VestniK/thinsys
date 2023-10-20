@@ -34,7 +34,7 @@ void write(
 template <output Out>
 void write(Out& out, std::span<std::byte> dest) {
   std::error_code ec;
-  ::io::write<Out>(out, dest, ec);
+  ::thinsys::io::write<Out>(out, dest, ec);
   if (ec)
     throw std::system_error(ec, "write");
 }

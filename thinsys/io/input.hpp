@@ -36,7 +36,7 @@ size_t read(In& in, std::span<std::byte> dest, std::error_code& ec) noexcept {
 template <input In>
 size_t read(In& in, std::span<std::byte> dest) {
   std::error_code ec;
-  size_t res = ::io::read<In>(in, dest, ec);
+  size_t res = ::thinsys::io::read<In>(in, dest, ec);
   if (ec)
     throw std::system_error(ec, "read");
   return res;

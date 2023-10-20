@@ -4,13 +4,15 @@
 
 #include <thinsys/io/span_io.hpp>
 
-static_assert(io::input<std::span<const std::byte>>);
-static_assert(io::input<std::span<std::byte>>);
-static_assert(!io::input<std::span<int>>);
-static_assert(!io::input<std::span<char>>);
-static_assert(!io::input<std::span<const char>>);
+namespace thinsys::io {
 
-static_assert(io::output<std::span<std::byte>>);
+static_assert(input<std::span<const std::byte>>);
+static_assert(input<std::span<std::byte>>);
+static_assert(!input<std::span<int>>);
+static_assert(!input<std::span<char>>);
+static_assert(!input<std::span<const char>>);
+
+static_assert(output<std::span<std::byte>>);
 
 using namespace std::literals;
 
@@ -39,3 +41,5 @@ SCENARIO("read from span") {
     }
   }
 }
+
+} // namespace thinsys::io
