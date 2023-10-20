@@ -9,3 +9,4 @@ cpp_unit(
     Catch2::Catch2WithMain
   TEST_ARGS --rng-seed time
 )
+add_library(thinsys::io ALIAS thinsys-io)
