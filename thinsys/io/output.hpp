@@ -32,9 +32,9 @@ void write(
 }
 
 template <output Out>
-void write(Out& out, std::span<std::byte> dest) {
+void write(Out& out, std::span<const std::byte> data) {
   std::error_code ec;
-  ::thinsys::io::write<Out>(out, dest, ec);
+  ::thinsys::io::write<Out>(out, data, ec);
   if (ec)
     throw std::system_error(ec, "write");
 }
