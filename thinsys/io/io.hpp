@@ -7,7 +7,6 @@
 
 #include <filesystem>
 #include <span>
-#include <string_view>
 #include <system_error>
 #include <utility>
 
@@ -179,6 +178,25 @@ inline void truncate(const file_descriptor& fd, std::streamoff off) {
   truncate(fd, off, ec);
   if (ec)
     throw std::system_error{ec, "ftruncate"};
+}
+
+enum class seek_whence { set = SEEK_SET, cur = SEEK_CUR, end = SEEK_END };
+inline std::streamoff seek(const file_descriptor& fd, std::streamoff off,
+    seek_whence whence, std::error_code ec) noexcept {
+  const std::streamoff res =
+      ::lseek(fd.native_handle(), off, std::to_underlying(whence));
+  if (res < 0)
+    ec = std::error_code{errno, std::system_category()};
+  return res;
+}
+
+inline std::streamoff seek(
+    const file_descriptor& fd, std::streamoff off, seek_whence whence) {
+  std::error_code ec;
+  const auto res = seek(fd, off, whence, ec);
+  if (ec)
+    throw std::system_error{ec, "lseek"};
+  return res;
 }
 
 class transactional_file {
